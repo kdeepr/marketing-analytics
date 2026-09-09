@@ -1,0 +1,86 @@
+total_contacts  total_subscriptions  conversion_rate_pct
+--------------  -------------------  -------------------
+41176           4639                 11.27              
+job            contacts  subscriptions  conversion_rate_pct
+-------------  --------  -------------  -------------------
+student        875       275            31.43              
+retired        1718      434            25.26              
+unemployed     1014      144            14.2               
+admin.         10419     1351           12.97              
+management     2924      328            11.22              
+unknown        330       37             11.21              
+technician     6739      730            10.83              
+self-employed  1421      149            10.49              
+housemaid      1060      106            10.0               
+entrepreneur   1456      124            8.52               
+services       3967      323            8.14               
+blue-collar    9253      638            6.9                
+age_group  contacts  conversion_rate_pct
+---------  --------  -------------------
+18-25      1665      20.96              
+26-35      14844     11.72              
+36-45      12839     8.51               
+46-55      8247      8.69               
+56-65      2963      15.22              
+66+        618       46.93              
+month  quarter  contacts  conversion_rate_pct
+-----  -------  --------  -------------------
+mar    Q1       546       50.55              
+apr    Q2       2631      20.49              
+may    Q2       13767     6.44               
+jun    Q2       5318      10.51              
+jul    Q3       7169      9.04               
+aug    Q3       6176      10.61              
+sep    Q3       570       44.91              
+oct    Q4       717       43.93              
+nov    Q4       4100      10.15              
+dec    Q4       182       48.9               
+campaign_bucket  contacts  conversion_rate_pct
+---------------  --------  -------------------
+1                17634     13.04              
+2-3              15908     11.22              
+4-6              5228      8.49               
+7+               2406      4.61               
+contact_channel  contacts  conversion_rate_pct
+---------------  --------  -------------------
+cellular         26135     14.74              
+telephone        15041     5.23               
+poutcome     contacts  conversion_rate_pct
+-----------  --------  -------------------
+success      1373      65.11              
+failure      4252      14.23              
+nonexistent  35551     8.83               
+pdays_bucket     contacts  conversion_rate_pct
+---------------  --------  -------------------
+0-7_days         1177      65.76              
+15-30_days       62        58.06              
+8-14_days        276       56.88              
+never_contacted  39661     9.26               
+job         education            contacts  subscriptions  conversion_rate_pct
+----------  -------------------  --------  -------------  -------------------
+student     unknown              167       59             35.33              
+student     high.school          357       114            31.93              
+retired     basic.4y             597       185            30.99              
+retired     professional.course  241       57             23.65              
+retired     university.degree    284       66             23.24              
+retired     high.school          276       62             22.46              
+student     university.degree    170       35             20.59              
+management  unknown              123       20             16.26              
+admin.      unknown              249       38             15.26              
+services    university.degree    173       26             15.03              
+unemployed  university.degree    262       39             14.89              
+admin.      university.degree    5750      822            14.3               
+unemployed  basic.4y             112       16             14.29              
+unemployed  professional.course  142       20             14.08              
+unemployed  basic.9y             186       26             13.98              
+outcome         avg_emp_var_rate  avg_cons_price_idx  avg_cons_conf_idx  avg_euribor3m  avg_nr_employed
+--------------  ----------------  ------------------  -----------------  -------------  ---------------
+not_subscribed  0.249             93.604              -40.593            3.811          5176.2         
+subscribed      -1.233            93.355              -39.791            2.123          5095.1         
+job         contacts  pct_of_all_contacts  conversion_rate_pct
+----------  --------  -------------------  -------------------
+student     875       2.13                 31.43              
+retired     1718      4.17                 25.26              
+unemployed  1014      2.46                 14.2               
+admin.      10419     25.3                 12.97              
+management  2924      7.1                  11.22              

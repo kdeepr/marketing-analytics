@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.DS_Store
+data/processed/marketing_analytics.db
+.Rhistory
+.RData
+*.Rproj.user

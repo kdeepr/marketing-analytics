@@ -1,0 +1,82 @@
+=========================================================
+BANK MARKETING CAMPAIGN - STATISTICAL ANALYSIS (R)
+=========================================================
+
+--- 1. Chi-square test: subscription ~ job ---
+
+	Pearson's Chi-squared test
+
+data:  tbl_job
+X-squared = 961.74, df = 11, p-value < 2.2e-16
+
+=> p-value = 3.268e-199. Reject H0: conversion rate depends significantly on job.
+
+--- 2. Chi-square test: subscription ~ poutcome ---
+
+	Pearson's Chi-squared test
+
+data:  tbl_poutcome
+X-squared = 4230.1, df = 2, p-value < 2.2e-16
+
+=> p-value = 0. Reject H0: prior outcome strongly predicts conversion.
+
+--- 3. Welch t-test: age by subscription outcome ---
+
+	Welch Two Sample t-test
+
+data:  age by y
+t = -4.7753, df = 5257.1, p-value = 1.843e-06
+alternative hypothesis: true difference in means between group 0 and group 1 is not equal to 0
+95 percent confidence interval:
+ -1.4123246 -0.5902179
+sample estimates:
+mean in group 0 mean in group 1 
+       39.91099        40.91227 
+
+=> p-value = 1.843e-06. Mean age (no)=39.9 vs (yes)=40.9
+
+--- 4. ANOVA: euribor3m (economic context) across quarters ---
+               Df Sum Sq Mean Sq F value Pr(>F)    
+quarter         3  13803    4601    1721 <2e-16 ***
+Residuals   41172 110063       3                   
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+=> Confirms macro-economic conditions vary materially by quarter,
+   which is why 'quarter' and the raw economic indicators both carry
+   independent signal in the model (see notebooks/03_modeling.ipynb).
+
+--- 5. Logistic regression: interpretable drivers of subscription ---
+# A tibble: 27 × 7
+   term                estimate std.error statistic   p.value conf.low conf.high
+   <chr>                  <dbl>     <dbl>     <dbl>     <dbl>    <dbl>     <dbl>
+ 1 (Intercept)            0.371   0.164     -6.05   1.49e-  9    0.269     0.512
+ 2 age                    1.00    0.00189    1.28   2.02e-  1    0.999     1.01 
+ 3 campaign               0.945   0.00946   -6.01   1.81e-  9    0.927     0.962
+ 4 previous               1.40    0.0528     6.33   2.50e- 10    1.26      1.55 
+ 5 contacted_before       0.437   0.0838    -9.87   5.41e- 23    0.370     0.515
+ 6 prior_success          7.63    0.0746    27.2    2.25e-163    6.60      8.84 
+ 7 emp_var_rate           0.915   0.0364    -2.44   1.46e-  2    0.852     0.983
+ 8 euribor3m              0.704   0.0339   -10.3    5.22e- 25    0.659     0.753
+ 9 jobblue-collar         0.691   0.0665    -5.56   2.64e-  8    0.606     0.787
+10 jobentrepreneur        0.782   0.105     -2.35   1.89e-  2    0.634     0.957
+11 jobhousemaid           0.958   0.123     -0.348  7.28e-  1    0.749     1.21 
+12 jobmanagement          0.853   0.0723    -2.21   2.73e-  2    0.739     0.981
+13 jobretired             1.55    0.0897     4.92   8.80e-  7    1.30      1.85 
+14 jobself-employed       0.896   0.0985    -1.12   2.64e-  1    0.736     1.08 
+15 jobservices            0.766   0.0730    -3.66   2.55e-  4    0.663     0.883
+16 jobstudent             1.57    0.0947     4.78   1.78e-  6    1.30      1.89 
+17 jobtechnician          0.952   0.0600    -0.816  4.15e-  1    0.846     1.07 
+18 jobunemployed          1.07    0.107      0.603  5.47e-  1    0.862     1.31 
+19 jobunknown             0.886   0.204     -0.593  5.53e-  1    0.586     1.30 
+20 educationbasic.6y      1.02    0.101      0.168  8.67e-  1    0.833     1.24 
+21 educationbasic.9y      0.906   0.0801    -1.24   2.16e-  1    0.774     1.06 
+22 educationhigh.scho…    1.01    0.0774     0.0755 9.40e-  1    0.865     1.17 
+23 educationilliterate    2.31    0.660      1.27   2.05e-  1    0.548     7.65 
+24 educationprofessio…    1.09    0.0854     1.01   3.14e-  1    0.922     1.29 
+25 educationuniversit…    1.21    0.0771     2.44   1.46e-  2    1.04      1.40 
+26 educationunknown       1.26    0.101      2.29   2.19e-  2    1.03      1.54 
+27 contacttelephone       0.729   0.0463    -6.81   9.66e- 12    0.666     0.798
+
+=> Odds ratios > 1 increase subscription odds; < 1 decrease them.
+   Full table saved to reports/r_outputs/logistic_regression_odds_ratios.csv
+
